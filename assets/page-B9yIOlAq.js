@@ -47,10 +47,11 @@ function s() {
         e.loop = !0,
         e.volume = .86,
         s.current = e,
-        e.play()
+        e.play().catch( () => {})
     }
       , u = () => {
                 h.current = !0,
+            document.body.style.overflow = ``,
                 l(),
                 t(!0)
         }
@@ -60,31 +61,19 @@ function s() {
             behavior: `smooth`
         }), 1650)
     }
-              , d = () => {
-                if (h.current)
-                    return;
-                document.body.style.overflow = `hidden`,
-                window.scrollTo(0, 0),
-                u(),
-                setTimeout( () => {
-                    document.body.style.overflow = ``,
-                    document.getElementById(`invitation`)?.scrollIntoView({
-                        behavior: `smooth`
-                    })
-                }, 1650)
-            }
     ;
     (0,
     r.useEffect)( () => {
+                document.body.style.overflow = `hidden`;
                 let e = () => {
-                    if (window.scrollY > 0)
-                        d()
+                    if (!h.current)
+                        window.scrollTo(0, 0)
                 }
                   , r = e => {
                         if (h.current)
                                 return;
-                        e.preventDefault(),
-                        d()
+                        l(),
+                        e.preventDefault()
                 }
                 ;
                 return window.addEventListener(`scroll`, e, {
