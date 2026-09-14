@@ -72,7 +72,6 @@ function s() {
                   , r = e => {
                         if (h.current)
                                 return;
-                        l(),
                         e.preventDefault()
                 }
                 ;
